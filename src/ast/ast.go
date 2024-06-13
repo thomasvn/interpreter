@@ -55,7 +55,8 @@ func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
 // Identifier Node
 
 type Identifier struct {
-	Token token.Token // the token.IDENT token Value string
+	Token token.Token // the token.IDENT token
+	Value string
 }
 
 func (i *Identifier) expressionNode()      {}
