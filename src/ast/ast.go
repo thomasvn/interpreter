@@ -41,6 +41,14 @@ func (p *Program) TokenLiteral() string {
 
 // -----------------------------------------------------------------------------
 // LetStatement Node
+//
+// Example:
+//   let x = 5;
+//   let y = 10;
+//   let foobar = 838383;
+//
+// Generally:
+//   let <identifier> = <expression>;
 
 type LetStatement struct {
 	Token token.Token // the token.LET token
@@ -61,3 +69,22 @@ type Identifier struct {
 
 func (i *Identifier) expressionNode()      {}
 func (i *Identifier) TokenLiteral() string { return i.Token.Literal }
+
+// -----------------------------------------------------------------------------
+// ReturnStatement Node
+//
+// Example:
+//   return 5;
+//   return 10;
+//   return add(15);
+//
+// Generally:
+//   return <expression>;
+
+type ReturnStatement struct {
+	Token       token.Token // the 'return' token
+	ReturnValue Expression
+}
+
+func (rs *ReturnStatement) statementNode()       {}
+func (rs *ReturnStatement) TokenLiteral() string { return rs.Token.Literal }
